@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffeef5">
+<title>For Zainab 💖</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;font-family:Georgia,serif}
+body{overflow:hidden;background:linear-gradient(135deg,#fff7fa,#ffe5ef);color:#7d2849}
+.app{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:18px;position:relative}
+.card{width:min(94vw,520px);min-height:650px;max-height:94dvh;overflow:auto;background:rgba(255,255,255,.82);border:1px solid rgba(232,62,140,.18);border-radius:30px;padding:34px 24px;box-shadow:0 18px 60px rgba(150,45,90,.16);text-align:center;position:relative}
+.hidden{display:none!important}
+h1{font-size:clamp(28px,7vw,42px);line-height:1.2;margin:80px 0 18px}
+p{font-family:Arial,sans-serif;color:#666;font-size:16px;line-height:1.5}
+.heart{font-size:70px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.buttons{height:150px;position:relative;margin-top:25px}
+button{border:0;border-radius:16px;padding:14px 26px;font-size:17px;font-weight:bold;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.yes{background:#e83e8c;color:white}
+.no{background:#777;color:white;position:absolute;left:55%;top:35px;transition:left .12s,top .12s}
+.next{background:#e83e8c;color:white;margin-top:25px}
+.input{width:100%;padding:14px;border:1px solid #efb7cc;border-radius:14px;font-size:16px;margin:8px 0 18px;background:white}
+label{display:block;text-align:left;font-family:Arial,sans-serif;font-weight:bold;margin-top:15px;color:#7d2849}
+.final h1{margin-top:40px}
+.final-message{font-size:clamp(22px,6vw,32px);font-weight:bold;line-height:1.45}
+.small{font-size:13px;color:#888}
+.confetti{position:fixed;top:-30px;pointer-events:none;z-index:20;font-size:22px;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.toast{font-family:Arial,sans-serif;color:#e83e8c;font-weight:bold;min-height:24px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="card">
+
+    <section id="page1">
+      <div class="heart">💖</div>
+      <h1>Will you marry me Zainab?</h1>
+      <p>Choose wisely... 😋❤️</p>
+      <div class="buttons" id="buttonArea">
+        <button class="yes" id="yesBtn">YES ♥</button>
+        <button class="no" id="noBtn">NO 😏</button>
+      </div>
+      <div class="toast" id="runMsg"></div>
+    </section>
+
+    <section id="page2" class="hidden">
+      <div class="heart">🥰</div>
+      <h1>YOU MINE<br>YOU HAVE TO<br>SAY YES BABE 😋</h1>
+      <p>I was waiting for that answer! ❤️</p>
+      <button class="next" id="page2Btn">Okay okay! →</button>
+    </section>
+
+    <section id="page3" class="hidden">
+      <div class="heart">📅</div>
+      <h1>Choose Date<br>Zainab Bongi</h1>
+
+      <label for="date">Pick a Day 📅</label>
+      <input class="input" id="date" type="date">
+
+      <label for="time">What Time? ⏰</label>
+      <input class="input" id="time" type="time">
+
+      <div class="toast" id="dateMsg"></div>
+      <button class="next" id="dateBtn">Set the Date! ♥</button>
+    </section>
+
+    <section id="page4" class="hidden final">
+      <div class="heart">💍</div>
+      <h1>🎉 Congratulations! 🎉</h1>
+      <div class="final-message">
+        Zainab Will Be In Sha Allah<br>
+        Azan Ahmad Wife Soon<br><br>
+        In Sha Allah, In Sha Allah, In Sha Allah!
+      </div>
+      <p>💖 💍 🎊 ❤️ 🎉</p>
+      <p class="small">Made with ❤️ by Azan Ahmad</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const pages = ["page1","page2","page3","page4"];
+function showPage(n){
+  pages.forEach(id => document.getElementById(id).classList.add("hidden"));
+  document.getElementById("page"+n).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+const noBtn = document.getElementById("noBtn");
+const area = document.getElementById("buttonArea");
+const runMsg = document.getElementById("runMsg");
+let escapes = 0;
+
+function moveNo(){
+  const a = area.getBoundingClientRect();
+  const b = noBtn.getBoundingClientRect();
+  const maxX = Math.max(5, a.width - b.width - 5);
+  const maxY = Math.max(5, a.height - b.height - 5);
+  noBtn.style.left = Math.floor(Math.random()*maxX) + "px";
+  noBtn.style.top = Math.floor(Math.random()*maxY) + "px";
+  escapes++;
+  const messages = [
+    "Nice try 😏",
+    "Too slow! 🏃💨",
+    "NO button says NO to you 😂",
+    "Almost! 😋",
+    "You can't catch me! 💨",
+    "Just press YES already ❤️"
+  ];
+  runMsg.textContent = messages[escapes % messages.length];
+}
+
+["mouseenter","touchstart","pointerdown"].forEach(event =>
+  noBtn.addEventListener(event, e => { e.preventDefault(); moveNo(); }, {passive:false})
+);
+noBtn.addEventListener("click", e => { e.preventDefault(); moveNo(); });
+
+document.getElementById("yesBtn").onclick = () => { showPage(2); confetti(); };
+document.getElementById("page2Btn").onclick = () => showPage(3);
+
+document.getElementById("dateBtn").onclick = () => {
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const msg = document.getElementById("dateMsg");
+
+  if(!date || !time){
+    msg.textContent = "Pick a date and time first, Zainab Jaan ❤️";
+    return;
+  }
+  showPage(4);
+  confetti();
+};
+
+function confetti(){
+  const pieces = ["💖","❤️","🎉","🎊","✨","💍","🌸"];
+  for(let i=0;i<55;i++){
+    const el = document.createElement("div");
+    el.className="confetti";
+    el.textContent=pieces[Math.floor(Math.random()*pieces.length)];
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDelay=Math.random()*1.2+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),4200);
+  }
+}
+</script>
+</body>
+</html>
