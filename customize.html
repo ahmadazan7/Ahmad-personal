@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Proposal Customize 💖</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#fff7fa,#ffe5ef);
+    color:#7d2849;
+    padding:30px 15px;
+}
+
+.container{
+    width:min(700px,100%);
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 15px 50px rgba(150,45,90,.15);
+}
+
+h1{
+    text-align:center;
+    margin-top:0;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+}
+
+label{
+    display:block;
+    margin-top:20px;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #efb7cc;
+    border-radius:12px;
+    font-size:16px;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:15px;
+    margin-top:25px;
+    background:#e83e8c;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.status{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>💖 Customize Your Proposal</h1>
+
+<p class="subtitle">
+Change the proposal settings below.
+</p>
+
+<label>Her Name</label>
+<input id="person" type="text" placeholder="">
+
+<label>Your Name</label>
+<input id="proposer" type="text" placeholder="">
+
+<label>Proposal Question</label>
+<input id="question" type="text"
+placeholder="will you?">
+
+<label>Small Message</label>
+<textarea id="message"
+placeholder=""></textarea>
+
+<label>YES Button</label>
+<input id="yesText" type="text" value="YES ♥">
+
+<label>NO Button</label>
+<input id="noText" type="text" value="NO 😏">
+
+<label>Final Message</label>
+<textarea id="finalMessage"
+placeholder=""></textarea>
+
+<label>Theme</label>
+
+<select id="theme">
+    <option value="pink">Pink 💖</option>
+    <option value="red">Red ❤️</option>
+    <option value="purple">Purple 💜</option>
+    <option value="blue">Blue 💙</option>
+</select>
+
+<button id="saveBtn">
+    💾 Save Customize Settings
+</button>
+
+<div class="status" id="status"></div>
+
+<div id="linkBox" style="display:none;margin-top:20px;">
+    <input id="proposalLink" type="text" readonly
+        style="width:100%;padding:13px;border:1px solid #efb7cc;border-radius:12px;font-size:14px;">
+    
+    <button id="copyBtn" style="margin-top:10px;">
+        📋 Copy Proposal Link
+    </button>
+</div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDrAe8SGYObtDHdnd4q-yJLJF-FLuBnEts",
+    authDomain: "proposal-maker-9f37a.firebaseapp.com",
+    projectId: "proposal-maker-9f37a",
+    storageBucket: "proposal-maker-9f37a.firebasestorage.app",
+    messagingSenderId: "375603541628",
+    appId: "1:375603541628:web:ac65e3f76686af1090fbf9"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+/* CREATE PROPOSAL */
+
+document.getElementById("saveBtn").onclick = async () => {
+
+    const person =
+        document.getElementById("person").value.trim();
+
+    const proposer =
+        document.getElementById("proposer").value.trim();
+
+    const question =
+        document.getElementById("question").value.trim();
+
+    const message =
+        document.getElementById("message").value.trim();
+
+    const yesText =
+        document.getElementById("yesText").value.trim();
+
+    const noText =
+        document.getElementById("noText").value.trim();
+
+    const finalMessage =
+        document.getElementById("finalMessage").value.trim();
+
+    const theme =
+        document.getElementById("theme").value;
+
+
+    const status =
+        document.getElementById("status");
+
+    const linkBox =
+        document.getElementById("linkBox");
+
+    const proposalLink =
+        document.getElementById("proposalLink");
+
+
+    /* CHECK NAMES */
+
+    if (!person || !proposer) {
+
+        status.textContent =
+            "Please enter both names first ❤️";
+
+        return;
+    }
+
+
+    status.textContent =
+        "Creating your proposal... ⏳";
+
+
+    try {
+
+        /* SAVE TO FIRESTORE */
+
+        const docRef = await addDoc(
+            collection(db, "proposals"),
+            {
+
+                person: person,
+
+                proposer: proposer,
+
+                question: question,
+
+                message: message,
+
+                yesText: yesText,
+
+                noText: noText,
+
+                finalMessage: finalMessage,
+
+                theme: theme,
+
+                savedAt: serverTimestamp()
+
+            }
+        );
+
+
+        /* CREATE LINK */
+
+        const link =
+            window.location.origin +
+            window.location.pathname.replace(
+                "customize.html",
+                "index.html"
+            ) +
+            "?id=" +
+            docRef.id;
+
+
+        proposalLink.value = link;
+
+        linkBox.style.display = "block";
+
+
+        status.textContent =
+            "✅ Proposal created successfully!";
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "❌ Error creating proposal: " +
+            error.message;
+
+    }
+
+};
+
+
+/* COPY LINK */
+
+document.getElementById("copyBtn").onclick = async () => {
+
+    const link =
+        document.getElementById("proposalLink").value;
+
+    try {
+
+        await navigator.clipboard.writeText(link);
+
+        document.getElementById("status").textContent =
+            "✅ Link copied! Send it to her ❤️";
+
+    }
+
+    catch (error) {
+
+        document.getElementById("status").textContent =
+            "Please copy the link manually.";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
