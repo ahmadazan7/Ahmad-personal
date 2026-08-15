@@ -161,10 +161,13 @@ label{
         opacity:0;
     }
 }
+.loading .app{
+    visibility:hidden;
+}
 </style>
 </head>
 
-<body>
+<body class="loading">
 
 <div class="app">
 
@@ -898,7 +901,9 @@ function confetti(){
    START
 ================================ */
 
-loadProposal();
+loadProposal().finally(() => {
+    document.body.classList.remove("loading");
+});
 
 </script>
 
