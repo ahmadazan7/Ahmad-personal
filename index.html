@@ -2,670 +2,654 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffeef5">
-<title>For my Donya 💖</title>
+
+<title>Proposal 💖</title>
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;font-family:Georgia,serif}
-body{overflow:hidden;background:linear-gradient(135deg,#fff7fa,#ffe5ef);color:#7d2849}
-.app{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:18px;position:relative}
-.card{width:min(94vw,520px);min-height:650px;max-height:94dvh;overflow:auto;background:rgba(255,255,255,.82);border:1px solid rgba(232,62,140,.18);border-radius:30px;padding:34px 24px;box-shadow:0 18px 60px rgba(150,45,90,.16);text-align:center;position:relative}
-.hidden{display:none!important}
-h1{font-size:clamp(28px,7vw,42px);line-height:1.2;margin:80px 0 18px}
-p{font-family:Arial,sans-serif;color:#666;font-size:16px;line-height:1.5}
-.heart{font-size:70px;animation:pulse 1.5s infinite}
-@keyframes pulse{50%{transform:scale(1.12)}}
-.buttons{height:150px;position:relative;margin-top:25px}
-button{border:0;border-radius:16px;padding:14px 26px;font-size:17px;font-weight:bold;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.yes{background:#e83e8c;color:white}
-.no{background:#777;color:white;position:absolute;left:55%;top:35px;transition:left .12s,top .12s}
-.next{background:#e83e8c;color:white;margin-top:25px}
-.input{width:100%;padding:14px;border:1px solid #efb7cc;border-radius:14px;font-size:16px;margin:8px 0 18px;background:white}
-label{display:block;text-align:left;font-family:Arial,sans-serif;font-weight:bold;margin-top:15px;color:#7d2849}
-.final h1{margin-top:40px}
-.final-message{font-size:clamp(22px,6vw,32px);font-weight:bold;line-height:1.45}
-.small{font-size:13px;color:#888}
-.confetti{position:fixed;top:-30px;pointer-events:none;z-index:20;font-size:22px;animation:fall 3s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
-.toast{font-family:Arial,sans-serif;color:#e83e8c;font-weight:bold;min-height:24px;margin-top:8px}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    font-family:Georgia,serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#fff7fa,#ffe5ef);
+    color:#7d2849;
+}
+
+.app{
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+}
+
+.card{
+    width:min(94vw,520px);
+    min-height:650px;
+    max-height:94dvh;
+    overflow:auto;
+    background:rgba(255,255,255,.82);
+    border:1px solid rgba(232,62,140,.18);
+    border-radius:30px;
+    padding:34px 24px;
+    box-shadow:0 18px 60px rgba(150,45,90,.16);
+    text-align:center;
+}
+
+.hidden{
+    display:none!important;
+}
+
+h1{
+    font-size:clamp(28px,7vw,42px);
+    line-height:1.2;
+    margin:80px 0 18px;
+}
+
+p{
+    font-family:Arial,sans-serif;
+    color:#666;
+    font-size:16px;
+    line-height:1.5;
+}
+
+.heart{
+    font-size:70px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.12)}
+}
+
+.buttons{
+    height:150px;
+    position:relative;
+    margin-top:25px;
+}
+
+button{
+    border:0;
+    border-radius:16px;
+    padding:14px 26px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.yes{
+    background:#e83e8c;
+    color:white;
+}
+
+.no{
+    background:#777;
+    color:white;
+    position:absolute;
+    left:55%;
+    top:35px;
+}
+
+.next{
+    background:#e83e8c;
+    color:white;
+    margin-top:25px;
+}
+
+.input{
+    width:100%;
+    padding:14px;
+    border:1px solid #efb7cc;
+    border-radius:14px;
+    font-size:16px;
+    margin:8px 0 18px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    margin-top:15px;
+    color:#7d2849;
+}
+
+.final h1{
+    margin-top:40px;
+}
+
+.final-message{
+    font-size:clamp(22px,6vw,32px);
+    font-weight:bold;
+    line-height:1.45;
+}
+
+.small{
+    font-size:13px;
+    color:#888;
+}
+
+.toast{
+    font-family:Arial,sans-serif;
+    color:#e83e8c;
+    font-weight:bold;
+    min-height:24px;
+    margin-top:8px;
+}
+
+.confetti{
+    position:fixed;
+    top:-30px;
+    pointer-events:none;
+    z-index:20;
+    font-size:22px;
+    animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div class="app">
-  <main class="card">
 
-    <!-- PAGE 1 -->
-    <section id="page1">
-      <div class="heart">💖</div>
+<main class="card">
 
-      <h1>Will you marry me?</h1>
+<!-- PAGE 1 -->
 
-      <p>Choose wisely... 😋❤️</p>
+<section id="page1">
 
-      <div class="buttons" id="buttonArea">
-        <button class="yes" id="yesBtn">YES ♥</button>
-        <button class="no" id="noBtn">NO 😏</button>
-      </div>
+<div class="heart">💖</div>
 
-      <div class="toast" id="runMsg"></div>
-    </section>
+<h1 id="question">
+Will you marry me?
+</h1>
 
+<p id="message">
+Choose wisely... 😋❤️
+</p>
 
-    <!-- PAGE 2 -->
-    <section id="page2" class="hidden">
+<div class="buttons" id="buttonArea">
 
-      <div class="heart">🥰</div>
+<button class="yes" id="yesBtn">
+YES ♥
+</button>
 
-      <h1>
-        YOU MINE<br>
-        YOU HAVE TO<br>
-        SAY YES BABE 😋
-      </h1>
+<button class="no" id="noBtn">
+NO 😏
+</button>
 
-      <p>I was waiting for that answer! ❤️</p>
+</div>
 
-      <button class="next" id="page2Btn">
-        Okay okay! →
-      </button>
+<div class="toast" id="runMsg"></div>
 
-    </section>
+</section>
 
 
-    <!-- PAGE 3 -->
-    <section id="page3" class="hidden">
+<!-- PAGE 2 -->
 
-      <div class="heart">📅</div>
+<section id="page2" class="hidden">
 
-      <h1>
-        Choose Date<br>
-        
-      </h1>
+<div class="heart">🥰</div>
 
-      <label for="date">Pick a Day 📅</label>
-      <input class="input" id="date" type="date">
+<h1 id="page2Title">
+YOU MINE<br>
+YOU HAVE TO<br>
+SAY YES BABE 😋
+</h1>
 
-      <label for="time">What Time? ⏰</label>
-      <input class="input" id="time" type="time">
+<p>
+I was waiting for that answer! ❤️
+</p>
 
-      <div class="toast" id="dateMsg"></div>
+<button class="next" id="page2Btn">
+Okay okay! →
+</button>
 
-      <button class="next" id="dateBtn">
-        Set the Date! ♥
-      </button>
-
-    </section>
+</section>
 
 
-    <!-- PAGE 4 -->
-    <section id="page4" class="hidden final">
+<!-- PAGE 3 -->
 
-      <div class="heart">💍</div>
+<section id="page3" class="hidden">
 
-      <h1>🎉 Congratulations! 🎉</h1>
+<div class="heart">📅</div>
 
-      <div class="final-message">
-        <br>
-        <br><br>
-        !
-      </div>
+<h1>
+Choose Date
+</h1>
 
-      <p>💖 💍 🎊 ❤️ 🎉</p>
+<label>
+Pick a Day 📅
+</label>
 
-      <p class="small">
-        Made with ❤️ by Ahmad
-      </p>
+<input
+class="input"
+id="date"
+type="date"
+>
 
-    </section>
+<label>
+What Time? ⏰
+</label>
 
-  </main>
+<input
+class="input"
+id="time"
+type="time"
+>
+
+<div
+class="toast"
+id="dateMsg">
+</div>
+
+<button
+class="next"
+id="dateBtn">
+Set the Date! ♥
+</button>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section id="page4" class="hidden final">
+
+<div class="heart">💍</div>
+
+<h1>
+🎉 Congratulations! 🎉
+</h1>
+
+<div
+class="final-message"
+id="finalMessage">
+Congratulations ❤️
+</div>
+
+<p>
+💖 💍 🎊 ❤️ 🎉
+</p>
+
+<p
+class="small"
+id="madeBy">
+Made with ❤️
+</p>
+
+</section>
+
+</main>
+
 </div>
 
 
-<!-- ================================================= -->
 <!-- FIREBASE -->
-<!-- ================================================= -->
 
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
 
 
 <script>
 
-/* =====================================================
-   FIREBASE CONFIGURATION
-   ===================================================== */
+/* ================================
+   FIREBASE
+================================ */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDrAe8SGY0btDHndd4q-yJLJF-LFuBnEts",
-  authDomain: "proposal-maker-9f37a.firebaseapp.com",
-  projectId: "proposal-maker-9f37a",
-  storageBucket: "proposal-maker-9f37a.firebasestorage.app",
-  messagingSenderId: "375603541628",
-  appId: "1:375603541628:web:ac65e3f76686af1090fbf9"
+
+    apiKey:
+    "AIzaSyDrAe8SGY0btDHndd4q-yJLJF-LFuBnEts",
+
+    authDomain:
+    "proposal-maker-9f37a.firebaseapp.com",
+
+    projectId:
+    "proposal-maker-9f37a",
+
+    storageBucket:
+    "proposal-maker-9f37a.firebasestorage.app",
+
+    messagingSenderId:
+    "375603541628",
+
+    appId:
+    "1:375603541628:web:ac65e3f76686af1090fbf9"
+
 };
-
-
-/* Start Firebase */
 
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
 
-/* =====================================================
+/* ================================
+   GET PROPOSAL ID
+================================ */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const proposalId =
+    params.get("id");
+
+console.log("Proposal ID:", proposalId);
+
+
+/* ================================
    PAGE SYSTEM
-   ===================================================== */
+================================ */
 
-const pages = [
-  "page1",
-  "page2",
-  "page3",
-  "page4"
-];
+function showPage(number){
 
-function showPage(n){
-
-  pages.forEach(id => {
     document
-      .getElementById(id)
-      .classList.add("hidden");
-  });
+        .querySelectorAll("section")
+        .forEach(section => {
 
-  document
-    .getElementById("page" + n)
-    .classList.remove("hidden");
+            section.classList.add("hidden");
 
-  window.scrollTo(0,0);
+        });
+
+    document
+        .getElementById("page" + number)
+        .classList.remove("hidden");
+
 }
 
 
-/* =====================================================
+/* ================================
    NO BUTTON
-   ===================================================== */
+================================ */
 
-const noBtn = document.getElementById("noBtn");
-const area = document.getElementById("buttonArea");
-const runMsg = document.getElementById("runMsg");
+const noBtn =
+    document.getElementById("noBtn");
+
+const area =
+    document.getElementById("buttonArea");
+
+const runMsg =
+    document.getElementById("runMsg");
 
 let escapes = 0;
 
+
 function moveNo(){
 
-  const a = area.getBoundingClientRect();
-  const b = noBtn.getBoundingClientRect();
-
-  const maxX =
-    Math.max(5, a.width - b.width - 5);
-
-  const maxY =
-    Math.max(5, a.height - b.height - 5);
-
-  noBtn.style.left =
-    Math.floor(Math.random() * maxX) + "px";
-
-  noBtn.style.top =
-    Math.floor(Math.random() * maxY) + "px";
-
-  escapes++;
-
-  const messages = [
-    "Nice try 😏",
-    "Too slow! 🏃💨",
-    "NO button says NO to you 😂",
-    "Almost! 😋",
-    "You can't catch me! 💨",
-    "Just press YES already ❤️"
-  ];
-
-  runMsg.textContent =
-    messages[escapes % messages.length];
-}
-
-
-["mouseenter","touchstart","pointerdown"].forEach(event => {
-
-  noBtn.addEventListener(
-    event,
-    e => {
-      e.preventDefault();
-      moveNo();
-    },
-    {passive:false}
-  );
-
-});
-
-noBtn.addEventListener("click", e => {
-
-  e.preventDefault();
-
-  moveNo();
-
-});
-
-
-/* =====================================================
-   YES BUTTON
-   SAVE ANSWER TO FIRESTORE
-   ===================================================== */
-
-document.getElementById("dateBtn").onclick = async () => {
-
-  const date =
-    document.getElementById("date").value;
-
-  const time =
-    document.getElementById("time").value;
-
-  const msg =
-    document.getElementById("dateMsg");
-
-
-  /* Check date and time */
-
-  if (!date || !time) {
-
-    msg.textContent =
-      "Pick a date and time first, ❤️";
-
-    return;
-  }
-
-
-  msg.textContent =
-    "Saving your date... ❤️";
-
-
-  try {
-
-    /* Get proposal ID from the link */
-
-    const params =
-      new URLSearchParams(window.location.search);
-
-    const proposalId =
-      params.get("id");
-
-
-    /* Make sure proposal ID exists */
-
-    if (!proposalId) {
-
-      throw new Error(
-        "Proposal ID is missing from the link."
-      );
-
-    }
-
-
-    /* Update the existing proposal */
-
-    await db
-      .collection("proposals")
-      .doc(proposalId)
-      .update({
-
-        answer: "YES",
-
-        weddingDate: date,
-
-        weddingTime: time,
-
-        noButtonEscapes: escapes,
-
-        dateSavedAt:
-          firebase.firestore.FieldValue.serverTimestamp()
-
-      });
-
-
-    msg.textContent =
-      "Date saved successfully! ❤️";
-
-
-    /* Go to congratulations page */
-
-    setTimeout(() => {
-
-      showPage(4);
-
-      confetti();
-
-    }, 500);
-
-
-  }
-
-  catch (error) {
-
-    console.error(
-      "Error saving date:",
-      error
-    );
-
-    msg.textContent =
-      "Something went wrong. Please try again ❤️";
-
-  }
-
-};
-
-
-/* =====================================================
-   CONFETTI
-   ===================================================== */
-
-function confetti(){
-
-  const pieces = [
-    "💖",
-    "❤️",
-    "🎉",
-    "🎊",
-    "✨",
-    "💍",
-    "🌸"
-  ];
-
-  for(let i = 0; i < 55; i++){
-
-    const el =
-      document.createElement("div");
-
-    el.className = "confetti";
-
-    el.textContent =
-      pieces[
-        Math.floor(
-          Math.random() * pieces.length
-        )
-      ];
-
-    el.style.left =
-      Math.random() * 100 + "vw";
-
-    el.style.animationDelay =
-      Math.random() * 1.2 + "s";
-
-    document.body.appendChild(el);
-
-    setTimeout(
-      () => el.remove(),
-      4200
-    );
-
-  }
-
-}
-
-</script>
-<script>
-
-/* =========================================
-   YES BUTTON
-========================================= */
-
-document.getElementById("yesBtn").onclick = async () => {
-
-    try {
-
-        const params =
-            new URLSearchParams(window.location.search);
-
-        const proposalId =
-            params.get("id");
-
-        if (!proposalId) {
-
-            throw new Error(
-                "Proposal ID is missing from the link."
-            );
-
-        }
-
-        await db
-            .collection("proposals")
-            .doc(proposalId)
-            .update({
-
-                answer: "YES",
-
-                noButtonEscapes: escapes,
-
-                answeredAt:
-                    firebase.firestore.FieldValue.serverTimestamp()
-
-            });
-
-        console.log("YES answer saved!");
-
-        showPage(2);
-
-        confetti();
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Could not save YES answer:",
-            error
+    const a =
+        area.getBoundingClientRect();
+
+    const b =
+        noBtn.getBoundingClientRect();
+
+    const maxX =
+        Math.max(
+            5,
+            a.width - b.width - 5
         );
 
-        // Still continue to page 2
-        showPage(2);
+    const maxY =
+        Math.max(
+            5,
+            a.height - b.height - 5
+        );
 
-        confetti();
+    noBtn.style.left =
+        Math.floor(
+            Math.random() * maxX
+        ) + "px";
 
-    }
+    noBtn.style.top =
+        Math.floor(
+            Math.random() * maxY
+        ) + "px";
 
-};
+    escapes++;
 
-/* PAGE 2 BUTTON */
-
-document.getElementById("page2Btn").onclick = () => {
-
-    showPage(3);
-
-};
-/* =========================================
-   LOAD CUSTOM PROPOSAL FROM FIRESTORE
-========================================= */
+    runMsg.textContent =
+        "Nice try 😏";
+}
 
 
-async function loadProposal() {
-  
+noBtn.addEventListener(
+    "mouseenter",
+    moveNo
+);
 
-    const params = new URLSearchParams(window.location.search);
-    const proposalId = params.get("id");
+noBtn.addEventListener(
+    "touchstart",
+    function(e){
 
-    // No ID = show the normal/default proposal
-    if (!proposalId) {
+        e.preventDefault();
+
+        moveNo();
+
+    },
+    {passive:false}
+);
+
+
+/* ================================
+   LOAD CUSTOM PROPOSAL
+================================ */
+
+async function loadProposal(){
+
+    if(!proposalId){
+
+        console.log(
+            "No proposal ID. Using default."
+        );
+
         return;
+
     }
 
-    try {
+    try{
 
-        console.log("Loading proposal:", proposalId);
+        console.log(
+            "Loading:",
+            proposalId
+        );
 
-        const doc = await db
+
+        const doc =
+            await db
             .collection("proposals")
             .doc(proposalId)
             .get();
 
-        if (!doc.exists) {
 
-            console.error("Proposal not found!");
+        if(!doc.exists){
+
+            console.error(
+                "Proposal does not exist."
+            );
 
             return;
-        }
-
-        const data = doc.data();
-
-        console.log("Proposal loaded:", data);
-
-
-        /* =========================================
-           PAGE 1
-        ========================================= */
-
-        // Proposal question
-        const page1Title =
-            document.querySelector("#page1 h1");
-
-        if (page1Title && data.question) {
-            page1Title.textContent = data.question;
-        }
-
-
-        // Small message
-        const page1Message =
-            document.querySelector("#page1 p");
-
-        if (page1Message && data.message) {
-            page1Message.textContent = data.message;
-        }
-
-
-        // YES button
-        const yesButton =
-            document.getElementById("yesBtn");
-
-        if (yesButton && data.yesText) {
-            yesButton.textContent = data.yesText;
-        }
-
-
-        // NO button
-        const noButton =
-            document.getElementById("noBtn");
-
-        if (noButton && data.noText) {
-            noButton.textContent = data.noText;
-        }
-
-
-        /* =========================================
-           PAGE 2
-        ========================================= */
-
-        const page2Title =
-            document.querySelector("#page2 h1");
-
-        if (page2Title && data.person) {
-
-            page2Title.innerHTML =
-                `<br>
-                 I GOT U 😋 <br>
-                 `;
 
         }
 
 
-        /* =========================================
-           PAGE 4
-        ========================================= */
-
-        const finalMessage =
-            document.querySelector(".final-message");
-
-        if (finalMessage && data.finalMessage) {
-
-            finalMessage.innerHTML =
-                data.finalMessage.replace(
-                    /\n/g,
-                    "<br>"
-                );
-
-        }
+        const data =
+            doc.data();
 
 
-        /* =========================================
-           PAGE 4 — PERSONAL NAMES
-        ========================================= */
+        console.log(
+            "CUSTOM DATA:",
+            data
+        );
 
-        const smallText =
-            document.querySelector("#page4 .small");
 
-        if (smallText && data.proposer) {
+        /* QUESTION */
 
-            smallText.textContent =
-                "Made with ❤️ by " + data.proposer;
+        if(data.question){
+
+            document
+            .getElementById("question")
+            .textContent =
+            data.question;
 
         }
 
 
-        /* =========================================
-           THEME
-        ========================================= */
+        /* MESSAGE */
 
-        if (data.theme) {
+        if(data.message){
 
-            const themes = {
+            document
+            .getElementById("message")
+            .textContent =
+            data.message;
 
-                pink: {
-                    background:
-                        "linear-gradient(135deg,#fff7fa,#ffe5ef)",
-                    color: "#7d2849",
-                    button: "#e83e8c"
-                },
+        }
 
-                red: {
-                    background:
-                        "linear-gradient(135deg,#fff5f5,#ffe0e0)",
-                    color: "#8b1e1e",
-                    button: "#e53935"
-                },
 
-                purple: {
-                    background:
-                        "linear-gradient(135deg,#faf5ff,#eadcff)",
-                    color: "#5b2a86",
-                    button: "#8e44ad"
-                },
+        /* YES */
 
-                blue: {
-                    background:
-                        "linear-gradient(135deg,#f5fbff,#dff1ff)",
-                    color: "#185a7d",
-                    button: "#2196f3"
-                }
+        if(data.yesText){
 
-            };
+            document
+            .getElementById("yesBtn")
+            .textContent =
+            data.yesText;
 
-            const theme = themes[data.theme];
+        }
 
-            if (theme) {
 
-                document.body.style.background =
-                    theme.background;
+        /* NO */
 
-                document.body.style.color =
-                    theme.color;
+        if(data.noText){
 
-                document.querySelectorAll(
-                    ".yes, .next"
-                ).forEach(button => {
+            document
+            .getElementById("noBtn")
+            .textContent =
+            data.noText;
 
-                    button.style.background =
-                        theme.button;
+        }
 
-                });
 
+        /* PAGE 2 */
+
+        if(data.person){
+
+            document
+            .getElementById("page2Title")
+            .innerHTML =
+            "I GOT U 😋<br>" +
+            data.person;
+
+        }
+
+
+        /* FINAL MESSAGE */
+
+        if(data.finalMessage){
+
+            document
+            .getElementById("finalMessage")
+            .innerHTML =
+            data.finalMessage
+            .replace(/\n/g,"<br>");
+
+        }
+
+
+        /* PROPOSER */
+
+        if(data.proposer){
+
+            document
+            .getElementById("madeBy")
+            .textContent =
+            "Made with ❤️ by " +
+            data.proposer;
+
+        }
+
+
+        /* THEME */
+
+        const themes = {
+
+            pink:{
+                background:
+                "linear-gradient(135deg,#fff7fa,#ffe5ef)",
+                color:"#7d2849",
+                button:"#e83e8c"
+            },
+
+            red:{
+                background:
+                "linear-gradient(135deg,#fff5f5,#ffe0e0)",
+                color:"#8b1e1e",
+                button:"#e53935"
+            },
+
+            purple:{
+                background:
+                "linear-gradient(135deg,#faf5ff,#eadcff)",
+                color:"#5b2a86",
+                button:"#8e44ad"
+            },
+
+            blue:{
+                background:
+                "linear-gradient(135deg,#f5fbff,#dff1ff)",
+                color:"#185a7d",
+                button:"#2196f3"
             }
+
+        };
+
+
+        const theme =
+            themes[data.theme];
+
+
+        if(theme){
+
+            document.body.style.background =
+                theme.background;
+
+            document.body.style.color =
+                theme.color;
+
+
+            document
+            .querySelectorAll(".yes,.next")
+            .forEach(button => {
+
+                button.style.background =
+                    theme.button;
+
+            });
 
         }
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(
-            "Error loading proposal:",
+            "LOAD ERROR:",
             error
         );
 
@@ -674,7 +658,245 @@ async function loadProposal() {
 }
 
 
-/* Start loading */
+/* ================================
+   YES BUTTON
+================================ */
+
+document
+.getElementById("yesBtn")
+.onclick = async function(){
+
+    if(!proposalId){
+
+        showPage(2);
+
+        confetti();
+
+        return;
+
+    }
+
+
+    try{
+
+        await db
+        .collection("proposals")
+        .doc(proposalId)
+        .update({
+
+            answer:"YES",
+
+            noButtonEscapes:
+            escapes,
+
+            answeredAt:
+            firebase.firestore
+            .FieldValue
+            .serverTimestamp()
+
+        });
+
+
+        console.log(
+            "YES saved"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            "YES save error:",
+            error
+        );
+
+    }
+
+
+    showPage(2);
+
+    confetti();
+
+};
+
+
+/* ================================
+   PAGE 2 BUTTON
+================================ */
+
+document
+.getElementById("page2Btn")
+.onclick = function(){
+
+    showPage(3);
+
+};
+
+
+/* ================================
+   DATE BUTTON
+================================ */
+
+document
+.getElementById("dateBtn")
+.onclick = async function(){
+
+    const date =
+        document
+        .getElementById("date")
+        .value;
+
+    const time =
+        document
+        .getElementById("time")
+        .value;
+
+    const msg =
+        document
+        .getElementById("dateMsg");
+
+
+    if(!date || !time){
+
+        msg.textContent =
+        "Pick a date and time first ❤️";
+
+        return;
+
+    }
+
+
+    if(!proposalId){
+
+        msg.textContent =
+        "Proposal link is missing.";
+
+        return;
+
+    }
+
+
+    msg.textContent =
+    "Saving your date... ❤️";
+
+
+    try{
+
+        await db
+        .collection("proposals")
+        .doc(proposalId)
+        .update({
+
+            weddingDate:
+            date,
+
+            weddingTime:
+            time,
+
+            dateSavedAt:
+            firebase.firestore
+            .FieldValue
+            .serverTimestamp()
+
+        });
+
+
+        msg.textContent =
+        "Date saved successfully! ❤️";
+
+
+        setTimeout(
+            function(){
+
+                showPage(4);
+
+                confetti();
+
+            },
+            500
+        );
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "DATE ERROR:",
+            error
+        );
+
+        msg.textContent =
+        "Something went wrong. Please try again ❤️";
+
+    }
+
+};
+
+
+/* ================================
+   CONFETTI
+================================ */
+
+function confetti(){
+
+    const pieces = [
+        "💖",
+        "❤️",
+        "🎉",
+        "🎊",
+        "✨",
+        "💍",
+        "🌸"
+    ];
+
+
+    for(
+        let i = 0;
+        i < 55;
+        i++
+    ){
+
+        const el =
+            document.createElement("div");
+
+        el.className =
+            "confetti";
+
+        el.textContent =
+            pieces[
+                Math.floor(
+                    Math.random() *
+                    pieces.length
+                )
+            ];
+
+        el.style.left =
+            Math.random() *
+            100 +
+            "vw";
+
+        el.style.animationDelay =
+            Math.random() *
+            1.2 +
+            "s";
+
+        document.body.appendChild(el);
+
+
+        setTimeout(
+            () => el.remove(),
+            4200
+        );
+
+    }
+
+}
+
+
+/* ================================
+   START
+================================ */
 
 loadProposal();
 
