@@ -270,13 +270,9 @@ document.getElementById("saveBtn").onclick = async () => {
         /* CREATE LINK */
 
         const link =
-            window.location.origin +
-            window.location.pathname.replace(
-                "customize.html",
-                "index.html"
-            ) +
-            "?id=" +
-            docRef.id;
+    new URL("index.html", window.location.href).href +
+    "?id=" +
+    docRef.id;
 
 
         proposalLink.value = link;
