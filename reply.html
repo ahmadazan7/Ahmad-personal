@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Proposal Reply 💌</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    font-family:Arial,sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff7fa,
+        #ffe5ef
+    );
+
+    color:#7d2849;
+
+}
+
+.card{
+
+    width:min(500px,100%);
+
+    background:white;
+
+    padding:35px 25px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 50px
+    rgba(150,45,90,.15);
+
+}
+
+.heart{
+
+    font-size:65px;
+
+}
+
+h1{
+
+    margin:15px 0;
+
+}
+
+.reply{
+
+    margin-top:25px;
+
+    padding:20px;
+
+    background:#fff5f9;
+
+    border-radius:18px;
+
+    font-size:20px;
+
+    line-height:1.5;
+
+}
+
+.small{
+
+    color:#888;
+
+    margin-top:20px;
+
+}
+
+.error{
+
+    color:#d33;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+<div class="heart">
+💌
+</div>
+
+<h1>
+Reply ❤️
+</h1>
+
+<div
+class="reply"
+id="reply">
+
+Loading reply... ⏳
+
+</div>
+
+<p
+class="small"
+id="person">
+
+</p>
+
+</div>
+
+
+<script
+src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js">
+</script>
+
+<script
+src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js">
+</script>
+
+
+<script>
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyDrAe8SGY0btDHndd4q-yJLJF-LFuBnEts",
+
+    authDomain:
+    "proposal-maker-9f37a.firebaseapp.com",
+
+    projectId:
+    "proposal-maker-9f37a",
+
+    storageBucket:
+    "proposal-maker-9f37a.firebasestorage.app",
+
+    messagingSenderId:
+    "375603541628",
+
+    appId:
+    "1:375603541628:web:ac65e3f76686af1090fbf9"
+
+};
+
+
+firebase.initializeApp(
+    firebaseConfig
+);
+
+
+const db =
+    firebase.firestore();
+
+
+/* GET ID */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const proposalId =
+    params.get("id");
+
+
+/* LOAD REPLY */
+
+async function loadReply(){
+
+    const replyElement =
+        document.getElementById("reply");
+
+
+    if(!proposalId){
+
+        replyElement.innerHTML =
+            '<span class="error">Reply link is missing.</span>';
+
+        return;
+
+    }
+
+
+    try{
+
+        const doc =
+            await db
+            .collection("proposals")
+            .doc(proposalId)
+            .get();
+
+
+        if(!doc.exists){
+
+            replyElement.innerHTML =
+                '<span class="error">Proposal not found.</span>';
+
+            return;
+
+        }
+
+
+        const data =
+            doc.data();
+
+
+        if(!data.replyMessage){
+
+            replyElement.textContent =
+                "No reply has been sent yet ❤️";
+
+            return;
+
+        }
+
+
+        replyElement.textContent =
+            data.replyMessage;
+
+
+        if(data.person){
+
+            document
+            .getElementById("person")
+            .textContent =
+            "For " + data.person + " ❤️";
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        replyElement.innerHTML =
+            '<span class="error">Something went wrong.</span>';
+
+    }
+
+}
+
+
+loadReply();
+
+</script>
+
+
+</body>
+
+</html>
