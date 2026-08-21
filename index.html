@@ -233,7 +233,7 @@ Okay okay! →
 
 <div class="heart">📅</div>
 
-<h1>
+<h1 id="dateText">
 Choose Date
 </h1>
 
@@ -287,6 +287,10 @@ id="finalMessage">
 Congratulations ❤️
 </div>
 
+<button class="next" id="replyPageBtn">
+💌 Send a Reply
+</button>
+
 <p>
 💖 💍 🎊 ❤️ 🎉
 </p>
@@ -296,6 +300,42 @@ class="small"
 id="madeBy">
 Made with ❤️
 </p>
+
+<p
+class="small"
+id="madeBy">
+Made with ❤️
+</p>
+
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section id="page5" class="hidden">
+
+<div class="heart">💌</div>
+
+<h1>
+Send a Reply ❤️
+</h1>
+
+<p>
+Say something to the person who sent you this proposal.
+</p>
+
+<textarea
+class="input"
+id="replyMessage"
+placeholder="Write your message here ❤️"
+style="min-height:140px;resize:vertical;"
+></textarea>
+
+<div class="toast" id="replyMsg"></div>
+
+<button class="next" id="replyBtn">
+💌 Send Reply
+</button>
 
 </section>
 
@@ -575,6 +615,19 @@ async function loadProposal(){
         }
 
 
+        /* DATE & TIME TEXT */
+
+        if(data.dateText){
+
+            document
+            .getElementById("dateText")
+            .textContent =
+            data.dateText;
+
+        }
+
+
+        
         /* PROPOSER */
 
         if(data.proposer){
@@ -618,7 +671,79 @@ async function loadProposal(){
                 "linear-gradient(135deg,#f5fbff,#dff1ff)",
                 color:"#185a7d",
                 button:"#2196f3"
+            },
+            
+            green:{
+                background:
+                "linear-gradient(135deg,#f5fff7,#dff7e5)",
+                color:"#176b3a",
+                button:"#28a745"
+            },
+
+            orange:{
+                background:
+                "linear-gradient(135deg,#fff8f0,#ffe5cc)",
+                color:"#9a4d00",
+                button:"#ff8c00"
+            },
+
+            yellow:{
+                background:
+                "linear-gradient(135deg,#fffef0,#fff3b8)",
+                color:"#806600",
+                button:"#f1c40f"
+            },
+
+            teal:{
+                background:
+                "linear-gradient(135deg,#f0fffe,#d5f5f2)",
+                color:"#146b68",
+                button:"#14a3a0"
+            },
+
+            cyan:{
+                background:
+                "linear-gradient(135deg,#f0fcff,#d5f3ff)",
+                color:"#126078",
+                button:"#00a9d6"
+            },
+
+            lavender:{
+                background:
+                "linear-gradient(135deg,#fbf7ff,#e8ddff)",
+                color:"#663b91",
+                button:"#9b59b6"
+            },
+
+            rose:{
+                background:
+                "linear-gradient(135deg,#fff5f8,#ffdce8)",
+                color:"#9c3157",
+                button:"#e75480"
+            },
+
+            mint:{
+                background:
+                "linear-gradient(135deg,#f3fff9,#d8f5e8)",
+                color:"#19704b",
+                button:"#20b878"
+            },
+
+            dark:{
+                background:
+                "linear-gradient(135deg,#292929,#111111)",
+                color:"#ffffff",
+                button:"#e83e8c"
+            },
+
+            gold:{
+                background:
+                "linear-gradient(135deg,#fffaf0,#f7e7b5)",
+                color:"#755b16",
+                button:"#d4a017"
             }
+
+            
 
         };
 
@@ -737,6 +862,19 @@ document
 
 
 /* ================================
+   REPLY PAGE BUTTON
+================================ */
+
+document
+.getElementById("replyPageBtn")
+.onclick = function(){
+
+    showPage(5);
+
+};
+
+
+/* ================================
    DATE BUTTON
 ================================ */
 
@@ -831,6 +969,91 @@ document
 
         msg.textContent =
         "Something went wrong. Please try again ❤️";
+
+    }
+
+};
+
+/* ================================
+   REPLY BUTTON
+================================ */
+
+document
+.getElementById("replyBtn")
+.onclick = async function(){
+
+    const reply =
+        document
+        .getElementById("replyMessage")
+        .value
+        .trim();
+
+    const msg =
+        document
+        .getElementById("replyMsg");
+
+
+    if(!reply){
+
+        msg.textContent =
+            "Write a message first ❤️";
+
+        return;
+
+    }
+
+
+    if(!proposalId){
+
+        msg.textContent =
+            "Proposal link is missing.";
+
+        return;
+
+    }
+
+
+    msg.textContent =
+        "Sending your reply... ⏳";
+
+
+    try{
+
+        await db
+        .collection("proposals")
+        .doc(proposalId)
+        .update({
+
+            replyMessage: reply,
+
+            repliedAt:
+                firebase.firestore
+                .FieldValue
+                .serverTimestamp()
+
+        });
+
+
+        msg.textContent =
+            "Reply sent successfully! ❤️";
+
+
+        document
+        .getElementById("replyBtn")
+        .disabled = true;
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "REPLY ERROR:",
+            error
+        );
+
+        msg.textContent =
+            "Something went wrong. Please try again ❤️";
 
     }
 
