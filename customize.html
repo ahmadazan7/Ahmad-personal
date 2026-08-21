@@ -125,13 +125,29 @@ placeholder=""></textarea>
 <textarea id="finalMessage"
 placeholder=""></textarea>
 
+<label>Date & Time Text</label>
+<input id="dateText" type="text" value="Choose Date">
+
 <label>Theme</label>
 
 <select id="theme">
+
     <option value="pink">Pink 💖</option>
     <option value="red">Red ❤️</option>
     <option value="purple">Purple 💜</option>
     <option value="blue">Blue 💙</option>
+
+    <option value="green">Green 💚</option>
+    <option value="orange">Orange 🧡</option>
+    <option value="yellow">Yellow 💛</option>
+    <option value="teal">Teal 🩵</option>
+    <option value="cyan">Cyan 🩵</option>
+    <option value="lavender">Lavender 💜</option>
+    <option value="rose">Rose 🌹</option>
+    <option value="mint">Mint 🌿</option>
+    <option value="dark">Dark 🖤</option>
+    <option value="gold">Gold 🏆</option>
+
 </select>
 
 <button id="saveBtn">
@@ -145,8 +161,22 @@ placeholder=""></textarea>
         style="width:100%;padding:13px;border:1px solid #efb7cc;border-radius:12px;font-size:14px;">
     
     <button id="copyBtn" style="margin-top:10px;">
-        📋 Copy Proposal Link
+        📋 Copy Proposal Link , This link is for proposal!
     </button>
+    <input
+    id="replyLink"
+    type="text"
+    readonly
+    placeholder="Reply link will appear here"
+    style="width:100%;padding:13px;border:1px solid #efb7cc;border-radius:12px;font-size:14px;margin-top:10px;"
+>
+
+<button
+    id="copyReplyBtn"
+    style="margin-top:10px;"
+>
+    💌 Copy Reply Link , Wait and watch reply!
+</button>
 </div>
 
 </div>
@@ -208,6 +238,9 @@ document.getElementById("saveBtn").onclick = async () => {
     const finalMessage =
         document.getElementById("finalMessage").value.trim();
 
+        const dateText =
+    document.getElementById("dateText").value.trim();
+
     const theme =
         document.getElementById("theme").value;
 
@@ -219,7 +252,11 @@ document.getElementById("saveBtn").onclick = async () => {
         document.getElementById("linkBox");
 
     const proposalLink =
-        document.getElementById("proposalLink");
+    document.getElementById("proposalLink");
+
+    const replyLink =
+        document.getElementById("replyLink");
+
 
 
     /* CHECK NAMES */
@@ -259,6 +296,8 @@ document.getElementById("saveBtn").onclick = async () => {
 
                 finalMessage: finalMessage,
 
+                dateText: dateText,
+
                 theme: theme,
 
                 savedAt: serverTimestamp()
@@ -270,12 +309,19 @@ document.getElementById("saveBtn").onclick = async () => {
         /* CREATE LINK */
 
         const link =
-    new URL("index.html", window.location.href).href +
-    "?id=" +
-    docRef.id;
+            new URL("index.html", window.location.href).href +
+            "?id=" +
+            docRef.id;
+
+        const replyLinkUrl =
+            new URL("reply.html", window.location.href).href +
+            "?id=" +
+            docRef.id;
 
 
         proposalLink.value = link;
+
+        replyLink.value = replyLinkUrl;
 
         linkBox.style.display = "block";
 
@@ -319,6 +365,29 @@ document.getElementById("copyBtn").onclick = async () => {
 
         document.getElementById("status").textContent =
             "Please copy the link manually.";
+
+    }
+
+};
+
+document.getElementById("copyReplyBtn").onclick = async () => {
+
+    const link =
+        document.getElementById("replyLink").value;
+
+    try {
+
+        await navigator.clipboard.writeText(link);
+
+        document.getElementById("status").textContent =
+            "✅ Reply link copied! ❤️";
+
+    }
+
+    catch (error) {
+
+        document.getElementById("status").textContent =
+            "Please copy the reply link manually.";
 
     }
 
